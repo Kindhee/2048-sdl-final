@@ -26,6 +26,7 @@ public:
 	int newTilesC();
 
 	bool testInGridC(int i, int j);
+	bool testWin();
 	bool testLooseC();
 };
 

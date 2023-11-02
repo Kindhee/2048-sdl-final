@@ -1,2 +1,3 @@
-﻿  2048 project.cpp
+﻿  grid.cpp
+C:\Users\romas\source\repos\2048 project\2048 project\grid.cpp(13,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   2048 project.vcxproj -> C:\Users\romas\source\repos\2048 project\x64\Debug\2048 project.exe

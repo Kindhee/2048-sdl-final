@@ -7,11 +7,12 @@
 
 class GameObject
 {
-
 public:
 
-	GameObject();
+	SDL_Rect rect;
 
-	void copyRenderer(SDL_Renderer* renderer, SDL_Texture* texture, SDL_Rect rect);
+	GameObject(int x, int y, int w, int h);
+
+	void Draw(SDL_Renderer* renderer, SDL_Texture* texture);
 
 };

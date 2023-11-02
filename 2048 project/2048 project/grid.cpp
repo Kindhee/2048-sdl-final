@@ -8,14 +8,20 @@ Grid::Grid() {
 
     starting = 2;
     int count = 0;
+    int count_x = 100;
+    int count_y = 100;
     srand(time(NULL));
 
     for (int j = 0; j < size_gridC; ++j)
     {
         for (int i = 0; i < size_gridC; ++i)
         {
-            grid[j][i] = Cell();
+            grid[j][i] = Cell(count_x, count_y, 150, 150);
+            
+            count_x += 150;
         }
+        count_x = 100;
+        count_y += 150;
     }
 
     int test_starting_tiles;
@@ -280,6 +286,20 @@ int Grid::newTilesC() {
         }
     }
     return 1;
+}
+
+
+bool Grid::testWin() {
+    for (int j = 0; j < 4; ++j) {
+        for (int i = 0; i < 4; ++i)
+        {
+            if (grid[i][j].getValue() == 2048) {
+                return true;
+
+            }
+        }
+    }
+    return false;
 }
 
 bool Grid::testLooseC() {

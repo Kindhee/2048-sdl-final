@@ -8,7 +8,7 @@
 #include "cell.h"
 #include "gameObject.h"
 
-const int texture_count = 16;
+const int texture_count = 17;
 
 class Window
 {

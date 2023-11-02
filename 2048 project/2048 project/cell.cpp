@@ -4,7 +4,13 @@
 #include <stdlib.h>
 #include "SDL.h"
 
-Cell::Cell(){
+Cell::Cell(int x, int y, int w, int h) : GameObject(x, y, w, h)
+{
+	value = 0;
+}
+
+Cell::Cell() : GameObject(0, 0, 0, 0)
+{
 	value = 0;
 }
 

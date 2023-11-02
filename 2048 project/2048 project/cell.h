@@ -1,11 +1,13 @@
 #pragma once
+#include "gameObject.h"
 
-class Cell
+class Cell : public GameObject
 {
 public :
 	int value;
 	
 	Cell();
+	Cell(int x, int y, int w, int h);
 
 	int getValue();
 

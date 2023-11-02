@@ -108,6 +108,11 @@ void Window::loadBmpImg() {
     SDL_Texture* Bmp15 = SDL_CreateTextureFromSurface(renderer, S15);
     tabBmpImg[15] = Bmp15;
     SDL_FreeSurface(S15);
+
+    SDL_Surface* S16 = SDL_LoadBMP("img/win.bmp");
+    SDL_Texture* Bmp16 = SDL_CreateTextureFromSurface(renderer, S16);
+    tabBmpImg[16] = Bmp16;
+    SDL_FreeSurface(S16);
 }
 
 void Window::display() {
@@ -139,6 +144,16 @@ void Window::showTable(Cell grid[size_gridC][size_gridC], int lost) {
         board = tabBmpImg[15];
         SDL_RenderCopy(renderer, board, NULL, &rect_board);
 
+    }
+    else if (lost == 2) {
+
+        rect_board.x = 0;
+        rect_board.y = 0;
+        rect_board.w = 800;
+        rect_board.h = 100;
+
+        board = tabBmpImg[16];
+        SDL_RenderCopy(renderer, board, NULL, &rect_board);
     }
 
     rect_board.x = 0;
@@ -218,20 +233,19 @@ void Window::showTable(Cell grid[size_gridC][size_gridC], int lost) {
                 break;
             }
 
-            SDL_RenderCopy(renderer, Number, NULL, &rect_number);
+            grid[j][i].Draw(renderer, Number);
             rect_number.y = rect_number.y + 150;
         }
         rect_number.y = 100;
         rect_number.x = rect_number.x + 150;
     }
-    SDL_RenderPresent(renderer);
+    display();
 }
 
 int Window::gameLoop(){
     srand(time(NULL));
 
     Grid grid;
-    GameObject game;
 
     loadBmpImg();
 
@@ -254,6 +268,9 @@ int Window::gameLoop(){
 
                 if (grid.testLooseC() == true) {
                     lost = 1;
+                }
+                if (grid.testWin() == true) {
+                    lost = 2;
                 }
 
                 switch (event.type)
